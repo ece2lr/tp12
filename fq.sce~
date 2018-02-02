@@ -35,3 +35,16 @@ f = gcf()
 //f.color_map = .1 + .8*bonecolormap(32) // on croppe le noir et le blanc
 f.color_map = parulacolormap(32) // on croppe le noir et le blanc
 // }}}
+
+N = 10
+x = linspace(-1,1,N)
+y = linspace(-1,1,N)
+[X,Y] = meshgrid(x,y)
+//Z = Q(1,1) * X.^2 + Q(2,2) * Y.^2 + (Q(2,1)+Q(1,2)) * X.*Y
+fX = 2 * Q(1,1) * X + (Q(2,1)+Q(1,2)) * Y
+fY = (Q(2,1)+Q(1,2)) * X + 2 * Q(2,2) * Y
+
+champ(x,y,fX',fY',arfact=.5)
+//help champ
+a = gca()
+a.view = "3d"
